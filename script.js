@@ -143,16 +143,16 @@ function loadAssets(callback) {
             tileImagesLoadedCount++;
             console.log(`Loaded tile image for type ${type}: ${tileImageURLs[type]}`);
             if (tileImagesLoadedCount === totalTileImagesToLoad && dialogue.nextButtonLoaded && interactionButton.loaded && conversationImages.player && conversationImages.old) {
-                console.log("All assets loaded.");
+                //console.log("All assets loaded.");
                 callback();
             }
         };
         img.onerror = () => {
-            console.error(`Failed to load tile image for type ${type}: ${tileImageURLs[type]}`);
+            //console.error(`Failed to load tile image for type ${type}: ${tileImageURLs[type]}`);
             tileImages[type] = null;
             tileImagesLoadedCount++;
             if (tileImagesLoadedCount === totalTileImagesToLoad && dialogue.nextButtonLoaded && interactionButton.loaded && conversationImages.player && conversationImages.old) {
-                console.log("All assets loaded (with errors).");
+                //console.log("All assets loaded (with errors).");
                 callback();
             }
         };
@@ -164,18 +164,18 @@ function loadAssets(callback) {
     dialogue.nextButtonImage.onload = () => {
         dialogue.nextButtonLoaded = true;
         assetsLoadedCount++;
-        console.log(`Loaded next button image: ${nextButtonURL}`);
+        //console.log(`Loaded next button image: ${nextButtonURL}`);
         if (tileImagesLoadedCount === totalTileImagesToLoad && dialogue.nextButtonLoaded && interactionButton.loaded && conversationImages.player && conversationImages.old) {
-            console.log("All assets loaded.");
+            //console.log("All assets loaded.");
             callback();
         }
     };
     dialogue.nextButtonImage.onerror = () => {
-        console.warn(`Failed to load next button image: ${nextButtonURL}. Using fallback.`);
+        //console.warn(`Failed to load next button image: ${nextButtonURL}. Using fallback.`);
         dialogue.nextButtonLoaded = true;
         assetsLoadedCount++;
         if (tileImagesLoadedCount === totalTileImagesToLoad && dialogue.nextButtonLoaded && interactionButton.loaded && conversationImages.player && conversationImages.old) {
-            console.log("All assets loaded (with errors).");
+            //console.log("All assets loaded (with errors).");
             callback();
         }
     };
@@ -186,18 +186,18 @@ function loadAssets(callback) {
     interactionButton.image.onload = () => {
         interactionButton.loaded = true;
         assetsLoadedCount++;
-        console.log(`Loaded interaction button image: ${interactionButtonURL}`);
+        //console.log(`Loaded interaction button image: ${interactionButtonURL}`);
         if (tileImagesLoadedCount === totalTileImagesToLoad && dialogue.nextButtonLoaded && interactionButton.loaded && conversationImages.player && conversationImages.old) {
-            console.log("All assets loaded.");
+            //console.log("All assets loaded.");
             callback();
         }
     };
     interactionButton.image.onerror = () => {
-        console.warn(`Failed to load interaction button image: ${interactionButtonURL}. Using fallback.`);
+        //console.warn(`Failed to load interaction button image: ${interactionButtonURL}. Using fallback.`);
         interactionButton.loaded = true;
         assetsLoadedCount++;
         if (tileImagesLoadedCount === totalTileImagesToLoad && dialogue.nextButtonLoaded && interactionButton.loaded && conversationImages.player && conversationImages.old) {
-            console.log("All assets loaded (with errors).");
+            //console.log("All assets loaded (with errors).");
             callback();
         }
     };
@@ -210,18 +210,18 @@ function loadAssets(callback) {
         img.onload = () => {
             conversationImages[type] = img;
             assetsLoadedCount++;
-            console.log(`Loaded conversation image for ${type}: ${conversationImageURLs[type]}`);
+            //console.log(`Loaded conversation image for ${type}: ${conversationImageURLs[type]}`);
             if (tileImagesLoadedCount === totalTileImagesToLoad && dialogue.nextButtonLoaded && interactionButton.loaded && conversationImages.player && conversationImages.old) {
-                console.log("All assets loaded.");
+                //console.log("All assets loaded.");
                 callback();
             }
         };
         img.onerror = () => {
-            console.error(`Failed to load conversation image for ${type}: ${conversationImageURLs[type]}`);
+            //console.error(`Failed to load conversation image for ${type}: ${conversationImageURLs[type]}`);
             conversationImages[type] = null;
             assetsLoadedCount++;
             if (tileImagesLoadedCount === totalTileImagesToLoad && dialogue.nextButtonLoaded && interactionButton.loaded && conversationImages.player && conversationImages.old) {
-                console.log("All assets loaded (with errors).");
+               // console.log("All assets loaded (with errors).");
                 callback();
             }
         };
@@ -305,7 +305,7 @@ function placing(tileX, tileY, imageURL, width = TILE_SIZE, height = TILE_SIZE) 
     const img = new Image();
     img.src = imageURL;
     img.onload = () => {
-        console.log(`Loaded object image: ${imageURL} at tile (${tileX}, ${tileY}) with size ${width}x${height}`);
+        //console.log(`Loaded object image: ${imageURL} at tile (${tileX}, ${tileY}) with size ${width}x${height}`);
         placedObjects.push({
             x: tileX * TILE_SIZE, // Pixel position (top-left of tile)
             y: tileY * TILE_SIZE,
@@ -319,7 +319,7 @@ function placing(tileX, tileY, imageURL, width = TILE_SIZE, height = TILE_SIZE) 
         });
     };
     img.onerror = () => {
-        console.error(`Failed to load object image: ${imageURL}`);
+       // console.error(`Failed to load object image: ${imageURL}`);
     };
 }
 
@@ -412,10 +412,10 @@ function parseMap(mapText) {
     parsedMap = lines.map(line => line.split('').map(char => parseInt(char, 10)));
 
     if (parsedMap.length !== NUM_ROWS) {
-        console.warn(`Map has ${parsedMap.length} rows, expected ${NUM_ROWS}.`);
+        //console.warn(`Map has ${parsedMap.length} rows, expected ${NUM_ROWS}.`);
     }
     if (parsedMap[0] && parsedMap[0].length !== NUM_COLS) {
-        console.warn(`Map has ${parsedMap[0].length} columns, expected ${NUM_COLS}.`);
+        //console.warn(`Map has ${parsedMap[0].length} columns, expected ${NUM_COLS}.`);
     }
 }
 
@@ -441,7 +441,7 @@ function loadPlayerImages(callback) {
             }
         };
         img.onerror = () => {
-            console.error(`Failed to load player image for ${key}: ${imageURLs[key]}`);
+            //console.error(`Failed to load player image for ${key}: ${imageURLs[key]}`);
             player.images[key] = null; // Mark as failed
             player.imageLoadedCount++;
             if (player.imageLoadedCount === player.totalImagesToLoad) {
@@ -469,18 +469,18 @@ function loadAssets(callback) {
         img.onload = () => {
             tileImages[type] = img;
             tileImagesLoadedCount++;
-            console.log(`Loaded tile image for type ${type}: ${tileImageURLs[type]}`);
+            //console.log(`Loaded tile image for type ${type}: ${tileImageURLs[type]}`);
             if (tileImagesLoadedCount === totalTileImagesToLoad && dialogue.nextButtonLoaded) {
-                console.log("All tile images and next button loaded.");
+               // console.log("All tile images and next button loaded.");
                 callback();
             }
         };
         img.onerror = () => {
-            console.error(`Failed to load tile image for type ${type}: ${tileImageURLs[type]}`);
+            //console.error(`Failed to load tile image for type ${type}: ${tileImageURLs[type]}`);
             tileImages[type] = null; // Mark as failed
             tileImagesLoadedCount++;
             if (tileImagesLoadedCount === totalTileImagesToLoad && dialogue.nextButtonLoaded) {
-                console.log("All tile images and next button loaded (with errors).");
+               // console.log("All tile images and next button loaded (with errors).");
                 callback();
             }
         };
@@ -492,25 +492,25 @@ function loadAssets(callback) {
     dialogue.nextButtonImage.onload = () => {
         dialogue.nextButtonLoaded = true;
         assetsLoadedCount++;
-        console.log(`Loaded next button image: ${nextButtonURL}`);
+        //console.log(`Loaded next button image: ${nextButtonURL}`);
         if (tileImagesLoadedCount === totalTileImagesToLoad && dialogue.nextButtonLoaded) {
-            console.log("All tile images and next button loaded.");
+            //console.log("All tile images and next button loaded.");
             callback();
         }
     };
     dialogue.nextButtonImage.onerror = () => {
-        console.warn(`Failed to load next button image: ${nextButtonURL}. Using fallback.`);
+        //console.warn(`Failed to load next button image: ${nextButtonURL}. Using fallback.`);
         dialogue.nextButtonLoaded = true;
         assetsLoadedCount++;
         if (tileImagesLoadedCount === totalTileImagesToLoad && dialogue.nextButtonLoaded) {
-            console.log("All tile images and next button loaded (with errors).");
+          //  console.log("All tile images and next button loaded (with errors).");
             callback();
         }
     };
 
     // Skip font loading for now (use Arial fallback)
     dialogue.fontLoaded = false;
-    console.log("Skipping font loading, using Arial fallback.");
+   // console.log("Skipping font loading, using Arial fallback.");
 }*/
 
 // Function to wrap text within a maximum width
