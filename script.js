@@ -816,7 +816,7 @@ function drawGame() {
         const startRow = Math.max(0, Math.floor(camera.y / TILE_SIZE));
         const endRow = Math.min(NUM_ROWS, Math.ceil((camera.y + canvas.height) / TILE_SIZE));
 
-        console.log(`Drawing tiles: rows ${startRow} to ${endRow}, cols ${startCol} to ${endCol}`);
+        //console.log(`Drawing tiles: rows ${startRow} to ${endRow}, cols ${startCol} to ${endCol}`);
         for (let r = startRow; r < endRow; r++) {
             for (let c = startCol; c < endCol; c++) {
                 if (r >= 0 && r < NUM_ROWS && c >= 0 && c < NUM_COLS) {
@@ -827,7 +827,7 @@ function drawGame() {
                     } else {
                         ctx.fillStyle = tileType === TILE_WALL ? '#444' : '#66B044';
                         ctx.fillRect(c * TILE_SIZE - camera.x, r * TILE_SIZE - camera.y, TILE_SIZE, TILE_SIZE);
-                        console.warn(`No image for tile type ${tileType} at row ${r}, col ${c}, using fallback color.`);
+                        //console.warn(`No image for tile type ${tileType} at row ${r}, col ${c}, using fallback color.`);
                     }
                 }
             }
@@ -839,7 +839,7 @@ function drawGame() {
         ctx.font = '20px Arial';
         ctx.textAlign = 'center';
         ctx.fillText('Loading Map Tiles...', canvas.width / 2, canvas.height / 2);
-        console.warn(`Tiles not loaded: tileImagesLoadedCount=${tileImagesLoadedCount}, parsedMap.length=${parsedMap.length}`);
+        //console.warn(`Tiles not loaded: tileImagesLoadedCount=${tileImagesLoadedCount}, parsedMap.length=${parsedMap.length}`);
     }
 
     // --- Draw Placed Objects ---
@@ -849,7 +849,7 @@ function drawGame() {
         } else {
             ctx.fillStyle = 'purple';
             ctx.fillRect(obj.x - camera.x, obj.y - camera.y, obj.width, obj.height);
-            console.warn(`No image for object at (${obj.x}, ${obj.y}), using fallback color.`);
+            //console.warn(`No image for object at (${obj.x}, ${obj.y}), using fallback color.`);
         }
     }
 
@@ -949,9 +949,9 @@ async function startGame() {
         }
         const mapText = await response.text();
         parseMap(mapText);
-        console.log("Parsed map:", parsedMap);
+        //console.log("Parsed map:", parsedMap);
     } catch (error) {
-        console.error("Error loading map.txt:", error);
+        //console.error("Error loading map.txt:", error);
         ctx.fillStyle = 'red';
         ctx.font = '24px Arial';
         ctx.textAlign = 'center';
@@ -973,7 +973,7 @@ async function startGame() {
 
         // Start dialogue after 1 second
         setTimeout(() => {
-            console.log("Triggering dialogue display.");
+            //console.log("Triggering dialogue display.");
             dialogue.active = true;
             dialogue.showTime = performance.now();
             dialogue.currentPage = 0;
@@ -984,7 +984,7 @@ async function startGame() {
 
         requestAnimationFrame(gameLoop);
     }).catch(error => {
-        console.error("Error loading assets:", error);
+        //console.error("Error loading assets:", error);
         ctx.fillStyle = 'red';
         ctx.font = '24px Arial';
         ctx.textAlign = 'center';
