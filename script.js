@@ -229,7 +229,7 @@ function loadAssets(callback) {
 
     // Skip font loading
     dialogue.fontLoaded = false;
-    console.log("Skipping font loading, using Arial fallback.");
+    //console.log("Skipping font loading, using Arial fallback.");
 }
 
 // --- Dialogue Input Handling ---
