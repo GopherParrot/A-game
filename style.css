@@ -1,1 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
+
+* {
+    font-family: Pixelify Sans;
+}
+
+body {
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #333;
+    width: 100vw; /* Ensure body takes full width */
+    height: 100vh; /* Ensure body takes full height */
+}
+
+canvas {
+    font-family: Pixelify Sans;
+    border: 1px solid white;
+    background-color: black;
+    /* Canvas size will be managed by JavaScript to fit the viewport */
+}
+
+#joystickBase {
+    position: fixed; /* Stays in place relative to the viewport */
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    left: 50px; 
+    bottom: 50px; 
+    z-index: 100; /* Ensure joystick is above the canvas */
+}
+
+#joystickHandle {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    cursor: grab;
+    touch-action: none; /* Prevent browser default touch actions like scrolling/zooming */
+}
 
