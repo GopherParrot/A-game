@@ -1,1 +1,1 @@
-# A-game
+# A-game (still underdeveloped)
